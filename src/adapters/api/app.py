@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from src.adapters.api.image import routes as ImageRouter
+from src.adapters.api import routes as ImageRouter
 
 app = FastAPI(title="PhotoDetect", version="0.1")
 
