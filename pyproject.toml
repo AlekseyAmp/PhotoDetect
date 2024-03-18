@@ -20,6 +20,7 @@ psycopg2-binary = "^2.9.9"
 ultralytics = "^8.1.29"
 python-multipart = "^0.0.9"
 pillow = "^10.2.0"
+autopep8 = "^2.1.0"
 
 
 [build-system]
