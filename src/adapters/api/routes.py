@@ -9,11 +9,11 @@ router = APIRouter()
 
 @router.post(path="/detect", response_model=ImageResponse)
 async def upload_and_detect_objects_on_image(
-    image: UploadFile = File(...),
+    file: UploadFile = File(...),
     image_service: ImageService = Depends(
         get_image_service
     )
 ) -> ImageResponse:
-    contents = await image.read()
+    file_data = await file.read()
 
-    return await image_service.process_image(contents)
+    return await image_service.process_image(file_data)

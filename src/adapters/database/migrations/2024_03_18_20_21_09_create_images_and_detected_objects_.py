@@ -23,7 +23,7 @@ def upgrade() -> None:
     op.execute(
         "ALTER DATABASE photodetect SET timezone TO 'Asia/Yekaterinburg';"
     )
-    
+
     op.create_table(
         'images',
         sa.Column(

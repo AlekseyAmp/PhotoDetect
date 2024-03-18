@@ -5,11 +5,11 @@ from PIL import Image
 from ultralytics import YOLO
 
 from src.adapters.detect.settings import settings
-from src.application import entities
+from src.application import entities, interfaces
 
 
 @dataclass
-class ObjectDetector:
+class ObjectDetector(interfaces.IObjectDetector):
     """
     Класс для обнаружения объектов на изображении
     с использованием модели YOLOv8.
@@ -28,17 +28,17 @@ class ObjectDetector:
 
     def detect_objects_on_image(
         self,
-        contents: bytes
+        image_data: bytes
     ) -> list[entities.DetectedObject]:
         """
         Обнаружение объектов на изображении.
 
-        :param contents: Байтовое представление входного изображения.
+        :param image_data: Байтовое представление входного изображения.
         :return: Список объектов, обнаруженных на изображении.
         """
 
         # Открываем изображение из байтового представления
-        image = Image.open(BytesIO(contents))
+        image = Image.open(BytesIO(image_data))
 
         # Предсказываем объекты на изображении с помощью загруженной модели
         results = self.model.predict(image)
