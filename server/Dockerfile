@@ -2,6 +2,9 @@ FROM python:3.12.1
 
 RUN pip install --no-cache-dir poetry
 
+RUN apt-get update
+RUN apt install -y libgl1-mesa-glx
+
 WORKDIR /app
 COPY server/pyproject.toml ./ 
 COPY server/poetry.lock ./
