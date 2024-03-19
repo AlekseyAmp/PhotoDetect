@@ -3,12 +3,12 @@ services:
   db:
     image: postgres:14
     environment:
-      POSTGRES_DB: WBTracker
+      POSTGRES_DB: photodetect
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     ports:
       - "5432:5432"
-    container_name: wbtracker-db
+    container_name: photodetect-db
 
   server:
     build:
@@ -16,4 +16,4 @@ services:
       dockerfile: server/Dockerfile
     ports:
       - "8000:8000"
-    container_name: wbtracker-server
+    container_name: photodetect-server
